@@ -1,0 +1,592 @@
+/* Existing CSS */
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 
+body {
+    background: white;
+    min-height: 200vh;
+} */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 1000;
+}
+
+header.sticky {
+    padding: 5px 100px;
+    background: #fff;
+    background-image: url("images/newimage.jpeg");
+}
+
+header .logo {
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.65s;
+}
+
+header .logo img {
+    height: 100px;  /* Adjust height as needed */
+    width: auto;   /* Maintain aspect ratio */
+    max-height: 70%; /* Ensure the logo doesn't exceed the header height */
+}
+
+
+header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    position: relative;
+    list-style: none;
+}
+
+header ul li a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: color 0.6s;
+}
+
+header.sticky .logo img,
+header.sticky ul li a {
+    color: white;
+}
+
+/* New CSS for the video banner */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: 50px ;
+}
+
+.banner video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    filter: brightness(70%); 
+    margin-bottom: 50px; 
+}
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    width: 80%; /* Adjust width as needed */
+    max-width: 1200px; /* Ensure it doesn't exceed a maximum width */
+    overflow: hidden; /* Hide any overflow */
+}
+
+.banner-content h1 {
+    font-size: 125px; /* Responsive font size based on viewport width */
+    font-weight: 700;
+    word-spacing: 20px;
+    animation: fadeIn 3s ease-out;
+    font-family: "Great Vibes", cursive;
+            font-weight: 400;
+            font-style: normal;    
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .banner-content h1 {
+        font-size: 8vw;
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+.banner-content p {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+
+
+
+/* Testimonial Starts */
+/* Testimonial Container */
+.testimonial-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Ensures only one testimonial is visible at a time */
+    background: white;
+    padding: 20px 0;
+    margin-bottom: 50px; /* Adjust the value as needed */
+}
+
+/* Testimonial Wrapper */
+.testimonial-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Full width of the container */
+}
+
+/* Testimonial Slide */
+.testimonial-slide {
+    flex: 0 0 100%; /* Each slide takes up 100% of the wrapper width */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 10px; /* Optional: Adjust border-radius if needed */
+}
+.testimonial-slide p{
+    font: 15px sans-serif;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+.testimonial-slide h3 {
+    margin-bottom: 10px; /* Adjust the space below the h3 element */
+    font-weight: bold; /* Example: Make the name bold */
+}
+
+.testimonial-slide span {
+    display: block; /* Ensures it takes up its own line */
+    margin-top: 5px; /* Adjust the space above the span element */
+    font-size: 0.9em; /* Example: Slightly smaller font size */
+}
+
+/* Arrow Styling */
+.testimonial-arrow {
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    font-size: 2.5em; /* Increased arrow size for better visibility */
+    color: white;
+    background: white;
+    /* border-radius: 100px; */
+    padding: 50px 30px 80px 50px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+}
+
+.left-arrow {
+    left: 0px;
+    
+}
+
+.right-arrow {
+    right: 0px;
+}
+
+.testimonial-heading {
+    font-family: "Alegreya", serif;
+    font-style: normal;
+    font-size: 3em;
+    
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+    /* text-transform: uppercase; */
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.testimonial-heading::before,
+.testimonial-heading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 2px;
+    background-color: #333;
+}
+
+.testimonial-heading::before {
+    left: 0;
+    transform: translateX(-150%);
+}
+
+.testimonial-heading::after {
+    right: 0;
+    transform: translateX(150%);
+}
+/* Testimonial ends */
+
+
+
+/* Curator Starts */
+
+.curator-container {
+    width: 100%;
+    position: relative;
+    padding: 500px 0;
+    margin-bottom: 0; /* Remove margin */
+    height: 500px; /* Set a specific height, adjust as needed */
+    background-image: url('images/curatorio.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; /* Ensure the image is centered */
+    z-index: 1;
+}
+
+/* Apply the brightness filter directly to the background image */
+.curator-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: inherit;
+    background-repeat: inherit;
+    background-position: inherit;
+    filter: brightness(30%);
+    z-index: 1;
+}
+
+/* Adjust the heading to ensure it's on top of the filter */
+.curator-heading {
+    font-family: "Alegreya", serif;
+    font-style: normal;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    position: absolute;
+    top: 50px; /* Position the heading at the top with some spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Ensures the text is above the filter */
+}
+
+
+
+/* Contact Form Starts */
+
+
+/* Contact Form Starts */
+
+
+.appointment-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.appointment-header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    font-family: "Alegreya", serif;
+    font-style: normal;
+
+}
+
+.appointment-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.appointment-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.appointment-left img {
+    max-width: 100%;
+    height: 400px;
+}
+
+.appointment-right {
+    flex: 1;
+    padding: 20px;
+}
+
+.appointment-right form {
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* Center items horizontally */
+}
+
+.appointment-right input,
+.appointment-right textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: left;
+}
+.appointment-right textarea{
+    height: 100px;
+}
+
+.appointment-right button {
+    padding: 20px 10px 20px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 180px;
+    text-align: center;
+    height: 60px;
+}
+
+.appointment-right button:hover {
+    background-color: #444;
+}
+
+
+/* Contact Form Ends */
+
+
+/* Footer Section Starts */
+.copyrights{
+    background-image: url("images/newimage.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .footer-container {
+  
+    padding: 10px;
+    display: flex;
+    margin-top: 2px;
+    align-items: center;
+    color: #fff;
+    height: 350px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .footer-logo img {
+    width: 450px;
+    height: 438px;
+    margin-left: 150px;
+    margin-right: 70px;
+  }
+  
+  .footer-content {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 20px;
+    /* justify-content: space-between; */
+    width: 100%;
+    padding-left: 20px;
+  }
+  
+  .footer-section {
+    width: 30%;
+    color: #ddd;
+  
+  }
+  
+  .contact-info h3,
+  .menu h3 {
+    display: flex;
+    color: #ccc;
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 13px;
+    margin-left: 50px;
+  }
+  
+  .menu h3{
+  margin-left: 0px;
+  }
+  .contact-info p {
+    line-height: 1.6;
+    margin: 0;
+    margin-left: 50px;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    width: 100px;
+    color: #ddd;
+  }
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Remove any default margins */
+    margin-left: 0px;
+    margin-bottom: 10px;
+  }
+  .menu ul li {
+    margin-bottom: 10px;
+  }
+  
+  .menu ul li a {
+  
+    text-decoration: none;
+    color: #ccc;
+    font-size: 14px;
+    font-weight: bold;
+  
+  }
+  
+  .menu ul li a:hover {
+    color: #f06c65;
+  }
+  .social-media{
+  margin-left: 50px;
+  
+  }
+  .social-media a{
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+    width: 100px;
+    height: 100px;
+    color: white;
+    text-decoration: none;
+  }
+  .fa-brands{
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .social-media a img:hover {
+    transform: scale(1.1);
+  }
+  .footer-section address{
+    align-items:center;
+  }
+  
+  /* Footer Section Ends */
+  
+
+@media only screen and (max-width: 600px) {
+    .testimonial-heading {
+        font-family: "Alegreya", serif;
+        font-style: normal;
+        font-size: 3em;
+        
+        color: #333;
+        text-align: center;
+        margin: 20px 0;
+        /* text-transform: uppercase; */
+        letter-spacing: 2px;
+        position: relative;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .banner {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        margin-bottom: 50px ;
+    }
+    
+    .banner video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+        background-size: cover;
+        filter: brightness(70%); 
+        margin-bottom: 50px; 
+    }
+    .banner-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff;
+        width: 80%; /* Adjust width as needed */
+        max-width: 1200px; /* Ensure it doesn't exceed a maximum width */
+        overflow: hidden; /* Hide any overflow */
+    }
+    
+    .banner-content h1 {
+        font-size: 51px; /* Responsive font size based on viewport width */
+        font-weight: 700;
+        animation: fadeIn 3s ease-out;
+            font-family: "Great Vibes", cursive;
+            font-weight: 400;
+            font-style: normal;    
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

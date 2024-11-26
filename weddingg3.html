@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Elvi Events</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2366c91d64.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="sstyles.css" />        
+
+
+</head>
+<body>
+    <header style="font-size: 15px;
+       font-family: 'Alegreya', serif;    font-style: normal;">
+        <a href="#" class="logo">
+            <img src="images/logoremovebg.png" alt="Elvi Events Logo">
+        </a>
+        <ul>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="services.php">Services</a></li>
+                <li><a href="ourwork.html">Our Work</a></li>
+                
+                <li><a href="#footer">Contact</a></li>
+                <li><a href="login_form.php">Login</a></li>
+            </ul>
+        </ul>
+    </header>
+    <section class="banner">
+        <video autoplay muted loop playsinline>
+            <source src="videos/combine2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="banner-content">
+            <h1>#TheShayStory</h1>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+
+<style>
+    /* Grid container styles */
+    .grid-container {
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        grid-template-rows: repeat(2, 1fr); /* 2 rows */
+        gap: 15px; /* Spacing between grid items */
+        padding: 20px;
+        justify-items: center; /* Center items horizontally */
+    }
+
+    /* Image styles */
+    .grid-container img {
+        justify-content: center;
+        width: 500px; /* Set width for images */
+        height: 600px; /* Set height for images */
+        object-fit: cover; /* Maintain aspect ratio */
+        border-radius: 12px; /* Rounded corners */
+        transition: transform 0.3s ease-in-out; /* Smooth zoom on hover */
+        cursor: pointer; /* Cursor changes to pointer on hover */
+    }
+
+    /* Hover effect for images */
+    .grid-container img:hover {
+        transform: scale(1.1); /* Zoom effect on hover */
+    }
+
+    /* Overlay styles */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none; /* Hide overlay by default */
+        z-index: 1000;
+    }
+
+    /* Overlay content styles */
+    .overlay img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 12px;
+    }
+
+    /* Close button styles */
+    .close-overlay {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        font-size: 50px;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    /* Navigation arrows styles */
+    .nav-arrow {
+        position: absolute;
+        top: 50%;
+        font-size: 50px;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+        transition: 0.3s;
+    }
+
+    .nav-arrow.left {
+        left: 20px;
+    }
+
+    .nav-arrow.right {
+        right: 20px;
+    }
+
+    /* Hover effect for arrows and close button */
+    .nav-arrow:hover, .close-overlay:hover {
+        color: #ccc;
+    }
+</style>
+</head>
+
+<body>
+    <!-- Grid container with 3x2 images -->
+    <div class="grid-container">
+        <img src="images/our-work/TheShayStory/w3-1.jpeg" alt="Image 1">
+        <img src="images/our-work/TheShayStory/w3-2.jpeg" alt="Image 2">
+        <img src="images/our-work/TheShayStory/w3-3.jpeg" alt="Image 3">
+        <img src="images/our-work/TheShayStory/w3-4.jpg" alt="Image 4">
+        <img src="images/our-work/TheShayStory/w3-5.jpg" alt="Image 5">
+        <img src="images/our-work/TheShayStory/w3-6.jpg" alt="Image 5">
+    </div>
+
+    <!-- Overlay for full-screen image view -->
+    <div class="overlay" id="overlay">
+        <span class="close-overlay" id="close-overlay">&times;</span>
+        <span class="nav-arrow left" id="prev-arrow">&#10094;</span>
+        <img id="overlay-image" src="" alt="Full-size image">
+        <span class="nav-arrow right" id="next-arrow">&#10095;</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.grid-container img');
+            const overlay = document.getElementById('overlay');
+            const overlayImage = document.getElementById('overlay-image');
+            const closeOverlay = document.getElementById('close-overlay');
+            const prevArrow = document.getElementById('prev-arrow');
+            const nextArrow = document.getElementById('next-arrow');
+
+            let currentIndex = 0;
+
+            // Show image in overlay
+            function showImage(index) {
+                overlay.style.display = 'flex';
+                overlayImage.src = images[index].src;
+            }
+
+            // Close overlay
+            function closeImage() {
+                overlay.style.display = 'none';
+            }
+
+            // Show previous image
+            function showPrevImage() {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                showImage(currentIndex);
+            }
+
+            // Show next image
+            function showNextImage() {
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                showImage(currentIndex);
+            }
+
+            // Add click event to images
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    currentIndex = index;
+                    showImage(currentIndex);
+                });
+            });
+
+            // Add click events to overlay elements
+            closeOverlay.addEventListener('click', closeImage);
+            prevArrow.addEventListener('click', showPrevImage);
+            nextArrow.addEventListener('click', showNextImage);
+
+            // Close overlay when clicking outside the image
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closeImage();
+                }
+            });
+        });
+    </script>
+<br><br><br><br>
+<!-- FOOTER STARTS -->
+<!-- FOOTER -->
+
+
+
+<section id="footer">
+    <div class="copyrights" style="color:white; font-size: 13px;">
+    <div class="footer-container">
+        
+        <!-- footer-container starts -->
+        <div class="footer-logo">
+            <!-- footer-logo starts -->
+            <a href="index.php">
+            <img src="images/icons/Elvi_Logo__2_-removebg-preview.png" alt="Logo"></a>
+        </div>
+
+        <div class="footer-content">
+            <div class="footer-section contact-info">
+                <h3>CONTACT</h3>
+                <!-- <p>Sejal Singh</p> -->
+                <p><i class="fa-solid fa-envelope"></i>  sejal.elvievents@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> 9168933930</p>
+                <!-- <p>Shreyas Adapa</p> --> <br>
+                <p><i class="fa-solid fa-envelope"></i>  shreyas.elvievents@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> 9290119516</p>
+               
+            </div>
+            
+            <div class="footer-section contact-info">
+            <h3>ADDRESS</h3>
+                <p>Northland Complex,<br>
+                    Shop No. 1& 2,<br>
+                    Ground Floor,<br>
+                    Indrayani Nagar,<br>
+                    Pune, Maharashtra 411039<br>
+                </p>
+            
+            </div>
+            <div class="footer-section menu">
+                <h3>MENU</h3>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
+                    <li><a href="services.php">Services</a></li>
+                    <li><a href="ourwork.php">Our Work</a></li>
+                </ul>
+            </div>
+            <!-- <div class="footer-section menu">
+                <ul>
+                    <li><a href="contactus.php">Contact</a></li>
+                </ul>
+            </div> -->
+            
+            &emsp; &emsp; &emsp;
+            <div class="footer-section social-media">
+                <a href="https://www.instagram.com/elvievents?igsh=MTQ4cDI1eDd3bzVhNg=="><i class="fa-brands fa-instagram fa-lg"></i></a><br>
+                <a href="https://www.facebook.com/worldofelvi?mibextid=ZbWKwL"><i class="fa-brands fa-facebook fa-lg"></i></a><br>
+                <!-- <a href="#"><i class="fa-brands fa-twitter fa-lg"></i></a> -->
+            </div>
+            
+            </div>
+            
+        </div>
+       <center> 
+         <i class="fa-regular fa-copyright"></i> 2023 Copyright: Elvi Events     |    Developed By Harshika Jadhav and Saanchi Kukreja </center><br><br>
+         </div>
+</div>
+</section> <!-- footer-container  starts -->
+</footer>
+
+
+
+
+</body>
+</html>
